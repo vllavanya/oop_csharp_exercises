@@ -1,39 +1,57 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace TechReturners.Exercises
 {
-    public class Exercise001
+    public interface ICat
     {
-        public static String CapitalizeWord(String word)
-        {
-            return char.ToUpper(word[0]) + word.Substring(1);
-        }
-
-        public static String GenerateInitials(String firstName, String lastName)
-        {
-            return char.ToUpper(firstName[0]) + "." + char.ToUpper(lastName[0]);
-            
-        }
-
-        public static double AddVat(double originalPrice, double vatRate)
-        {
-            return Math.Round(((originalPrice * vatRate) / 100) + originalPrice, 2);
-            
-        }
-
-        public static String Reverse(String sentence)
-        {
-            return string.Join(" ", sentence.Split(' ').Reverse().Select(x => new String(x.Reverse().ToArray())));
-            
-        }
-
-        public static int CountLinuxUsers(List<User> users)
-        {
-            return users.Count(x => x.Type == "Linux");
-            
-        }
-        
+        bool IsAsleep { get; set; }
+        string Setting { get; set; }
+        string Eat { get; set; }
+        int AverageHeight { get; set; }
+        void GoToSleep();
+        void WakeUp();
     }
+
+    public abstract class TypeCat
+    {
+        public bool IsAsleep { get; set; }
+        public string Setting { get; set; }
+        public string Eat { get; set; }
+        public int AverageHeight { get; set; }
+        public void GoToSleep()
+        {
+            IsAsleep = true;
+        }
+        public void WakeUp()
+        {
+            IsAsleep = false;
+        }
+    }
+    public class DomesticCat:TypeCat,ICat
+    {
+        public DomesticCat()
+        {
+            IsAsleep = false;
+            Setting = "domestic";
+            AverageHeight = 23;
+            Eat = "Purrrrrrr";
+        }
+    }
+    public class LionCat : TypeCat,ICat
+    {
+        public LionCat()
+        {
+            AverageHeight = 1100;
+            Eat = "Roar!!!!";
+
+        }
+    }
+    public class CheetahCat:TypeCat,ICat
+    {
+    public CheetahCat()
+        {
+            Eat = "Zzzzzzz";
+        }
+    }
+
 }
