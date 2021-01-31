@@ -12,7 +12,7 @@ namespace TechReturners.Exercises
         void WakeUp();
     }
 
-    public abstract class TypeCat
+    public abstract class TypeCat : ICat
     {
         public bool IsAsleep { get; set; }
         public string Setting { get; set; }
@@ -27,7 +27,7 @@ namespace TechReturners.Exercises
             IsAsleep = false;
         }
     }
-    public class DomesticCat:TypeCat,ICat
+    public class DomesticCat : TypeCat
     {
         public DomesticCat()
         {
@@ -37,7 +37,7 @@ namespace TechReturners.Exercises
             Eat = "Purrrrrrr";
         }
     }
-    public class LionCat : TypeCat,ICat
+    public class LionCat : TypeCat
     {
         public LionCat()
         {
@@ -46,9 +46,9 @@ namespace TechReturners.Exercises
 
         }
     }
-    public class CheetahCat:TypeCat,ICat
+    public class CheetahCat : TypeCat
     {
-    public CheetahCat()
+        public CheetahCat()
         {
             Eat = "Zzzzzzz";
         }
